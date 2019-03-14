@@ -61,5 +61,5 @@ class Site(models.Model):
     site_content = models.TextField(blank=True)
     #describe the Site
     def __str__(self):
-        return str(self.day)
+        return str(self.site_Id)
 

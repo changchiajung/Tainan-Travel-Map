@@ -7,7 +7,12 @@
 </style>
 <body>
 <h1>
-    Display Page for each Schedule
+    Schedule Title : {{ schedule_detail.title }} , Author : {{ schedule_detail.author }} , Content : {{ schedule_detail.content }} , Image : {{ schedule_detail.image }}
 </h1>
+{% for each_day in site_seq_detail%}
+    {% for each_site in each_day%}
+        <pre>Site=> Day: {{ forloop.parentloop.counter }} , Seq: {{ forloop.counter }}, Name: {{each_site.site_name}} , Location_Id: {{ each_site.location_Id }} , Phone_Number : {{ each_site.phone_number }} , Address : {{ each_site.address }}</pre>
+    {% endfor %}
+{% endfor %}
 </body>
 </html>
