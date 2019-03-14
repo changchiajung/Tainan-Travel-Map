@@ -9,5 +9,9 @@
 <h1>
     Index Page
 </h1>
+{% for ele in recommend%}
+<pre>{{forloop.counter}} Title: {{ele.title}}   Author: {{ele.author}}   Content: {{ele.content}}   Image: {{ele.image}}   Days: {{ele.days}}  Count:{{ele.count}}</pre>
+<br>
+{%endfor%}
 </body>
 </html>

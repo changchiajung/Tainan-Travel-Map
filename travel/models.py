@@ -20,7 +20,8 @@ class Schedule(models.Model):
     #Image to Schedule Maybe need default
     days = models.IntegerField(blank=True)
     #Total day of Schedule
-
+    sequence = models.CharField(max_length=1000, blank = True)
+    count = models.IntegerField(blank = True)
     def __str__(self):
         return self.title
 
@@ -53,10 +54,6 @@ class Site(models.Model):
     id = models.IntegerField(primary_key=True)
     schedule_Id = models.ForeignKey(Schedule, on_delete=models.CASCADE)
     #record which Schedule
-    day = models.IntegerField()
-    #In which day
-    sequence = models.IntegerField()
-    #In which sequence
     site_Id = models.ForeignKey(MapSite, on_delete=models.CASCADE)
     #record to MapSIte
     stay_time = models.IntegerField(blank=True)
