@@ -2,12 +2,42 @@
 <html>
 <head>
     {% load static %}
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <style>
 </style>
 <body>
 <h1>
-    Sch Page
+    Schedule Title : {{ schedule_detail.title }} , Author : {{ schedule_detail.author }} , Content : {{
+    schedule_detail.content }} , Image : {{ schedule_detail.image }}
 </h1>
+{% for each_day in site_seq_detail%}
+{% for each_site in each_day%}
+<pre>Site=> Day: {{ forloop.parentloop.counter }} , Seq: {{ forloop.counter }}, Name: {{each_site.site_name}} , Location_Id: {{ each_site.location_Id }} , Phone_Number : {{ each_site.phone_number }} , Address : {{ each_site.address }}</pre>
+{% endfor %}
+{% endfor %}
+<input type="text" value= {{schedule_detail.sequence}} size="50" id="sequence">
+<button onclick="update_data()"> Save</button>
 </body>
+<script>
+    $.ajaxSetup({async:false});
+    setInterval(update_data,180000);
+    //window.onbeforeunload = update_data;
+    function update_data() {
+        $.ajax
+        ({
+              url: '',
+              type: 'POST',
+              data:
+              {
+                message:$("#sequence").val()
+              },
+              dataType: 'json',
+              success: function(content){
+                console.log("success");
+              }
+
+          });
+    }
+</script>
 </html>
