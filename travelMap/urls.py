@@ -19,16 +19,18 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from travel.views import index, search_dis, sch, show, display, login, logout, register, profile
+from django.contrib import admin
+
 urlpatterns = [
-    url(r'^index', index),
-    url(r'^search', search_dis),
-    path('sch/<int:id_num>', sch),
-    path('show/<slug:slug>',show),
-    path('profile/<int:user_id>', profile),
-    url(r'^display/(?P<input_day>[-\w]+)/$', display, name="display"),
-    url(r'^accounts/login/$', login),
-	url(r'^accounts/logout/$', logout),
-	url(r'^accounts/register/$', register),
+                  url(r'^index', index),
+                  url(r'^search', search_dis),
+                  path('sch/<int:id_num>', sch),
+                  path('show/<slug:slug>', show),
+                  path('profile/<int:user_id>', profile),
+                  url(r'^display/(?P<input_day>[-\w]+)/$', display, name="display"),
+                  url(r'^accounts/login/$', login),
+                  url(r'^accounts/logout/$', logout),
+                  url(r'^accounts/register/$', register),
+                  path('admin/', admin.site.urls),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL)
-
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL)

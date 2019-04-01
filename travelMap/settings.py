@@ -32,6 +32,8 @@ ALLOWED_HOSTS = ["luffy.ee.ncku.edu.tw",
 # from usersys
 LOGIN_REDIRECT_URL = '/profiles/home'
 
+AUTH_USER_MODEL = 'user.User'
+
 
 # Application definition
 
@@ -43,12 +45,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'travel',
+    'user',
 )
 
 MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
